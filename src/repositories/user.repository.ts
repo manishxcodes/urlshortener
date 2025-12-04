@@ -5,21 +5,26 @@ import type { SignupInputType } from 'schema.ts';
 
 export class UserRepository {
     async findByEmail(email: string) {
-        return await db
+        const [user] = await db
             .select()
             .from(usersTable)
             .where(eq(usersTable.email, email));
+        
+        return user || null
     }
 
     async findById(id: string) {
-        return await db
+        const [user] = await db
             .select({
+                id: usersTable.id,
                 firstname: usersTable.firstname,
                 lastname: usersTable.lastname,
                 email: usersTable.email
             })
             .from(usersTable)
             .where(eq(usersTable.id, id));
+        
+        return user || null;
     }
 
     async createUser(data: SignupInputType) {
