@@ -9,6 +9,14 @@ export class AppResponse {
         });
     }
 
+    static successObject(message: string, data?: any) {
+        return { 
+            success: true,
+            message: message,
+            ...(data && { data })
+        }
+    }
+
     static created(res: Response, message: string, data?: any) {
         return this.success(res, message, data, 201);
     }
