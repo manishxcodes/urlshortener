@@ -18,7 +18,7 @@ const userRepository = new UserRepository();
 export const authMiddleware = asyncHandler(
     async(req: Request, res: Response, next: NextFunction) => {
         const authToken = req.header("Authorization");
-        if(!authToken || authToken.startsWith("Bearer ")) throw new AppError("Authorization missing", 401);
+        if(!authToken || !authToken.startsWith("Bearer ")) throw new AppError("Authorization missing", 401);
 
         const jwt_secret = process.env.JWT_SECRET;
         if(!jwt_secret) throw new AppError("Server config error. jwt secret missing", 500);
