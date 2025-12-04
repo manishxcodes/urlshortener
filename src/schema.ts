@@ -21,7 +21,7 @@ export const signupSchema = z.object({
     .max(16, "Password must be at most 16 characters"),
 });
 
-export type SignupInputType = z.infer<typeof signupSchema>
+export type SignupInputType = z.infer<typeof signupSchema>;
 
 export const signinSchema = z.object({  
     email: z
@@ -34,4 +34,37 @@ export const signinSchema = z.object({
     .max(16, "Password must be at most 16 characters"),
 }).strict();
 
-export type SigninInputType = z.infer<typeof signinSchema>
+export type SigninInputType = z.infer<typeof signinSchema>;
+
+// schema for url
+
+export const createUrlSchema = z.object({
+  shortCode: z
+    .string()
+    .min(3, "Short code must be at least 3 characters")
+    .max(10, "Short code must be at most 10 characters"),
+
+  targetURL: z
+    .url("Target URL must be a valid URL"),
+
+  userId: z
+    .uuid("Invalid user ID"),
+});
+
+
+export const createUrlRequestSchema = z.object({
+  shortCode: z
+    .string()
+    .min(3, "Short code must be at least 3 characters")
+    .max(10, "Short code must be at most 10 characters")
+    .optional(),
+
+  targetURL: z
+    .url("Target URL must be a valid URL"),
+});
+
+export type CreateUrlBodyType = z.infer<typeof createUrlSchema>;
+
+
+
+
