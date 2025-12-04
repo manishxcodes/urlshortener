@@ -17,7 +17,7 @@ export const signup = asyncHandler(
 
         return res.status(200)
             .cookie("token", data.token, options)
-            .json(AppResponse.success(res, "Signup successfull", {token: data.token}));
+            .json(AppResponse.successObject( "Signup successObjectfull", {token: data.token}));
     }
 )
 
@@ -27,7 +27,7 @@ export const signin = asyncHandler(
 
         return res.status(200)
             .cookie("token", result.token, options)
-            .json(AppResponse.success(res, "Login successfull", {token: result.token}));
+            .json(AppResponse.successObject( "Login successObjectfull", {token: result.token}));
     }
 )
 
@@ -38,7 +38,7 @@ export const signout = asyncHandler(
 
         return res.status(200)
             .clearCookie("token", options)
-            .json(AppResponse.success(res, "Logout successfull"));
+            .json(AppResponse.successObject( "Logout successfull"));
     }
 )
 
