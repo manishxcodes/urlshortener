@@ -22,3 +22,16 @@ export const signupSchema = z.object({
 });
 
 export type SignupInputType = z.infer<typeof signupSchema>
+
+export const signinSchema = z.object({  
+    email: z
+    .email("Invalid email format")
+    .max(255, "Email must be at most 255 characters"),
+
+  password: z
+    .string()
+    .min(8, "Password must be at least 8 characters")
+    .max(16, "Password must be at most 16 characters"),
+}).strict();
+
+export type SigninInputType = z.infer<typeof signinSchema>
