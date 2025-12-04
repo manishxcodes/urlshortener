@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import { AppError } from 'utils/AppError';
 import { UserRepository } from 'repositories/user.repository';
 import type { SignupInputType } from 'schema';
-import { hash, sign } from 'crypto';
 import { signToken } from 'utils/jwt';
 
 export class UserService {
