@@ -1,8 +1,13 @@
 import express from 'express';
-import { signup } from '../controllers/user.controller.ts'
+import { signin, signout, signup } from '../controllers/user.controller.ts'
 import { validate } from 'middleware/validate.middleware.ts';
-import { signupSchema } from 'schema.ts';
+import { signinSchema, signupSchema } from 'schema.ts';
+import { authMiddleware } from 'middleware/auth.middleware.ts';
 
 const router = express();
 
-router.post('/signup', validate(signupSchema), signup)
+router.post('/signup', validate(signupSchema), signup);
+router.post('/signin', validate(signinSchema), signin);
+router.post('/signout', authMiddleware, signout);
+
+export default router;
