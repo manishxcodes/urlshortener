@@ -3,11 +3,14 @@ import dotenv from 'dotenv';
 import { errorHandler } from 'utils/ErrorHanlder.ts';
 import  userRouter  from './route/user.route.ts';
 import cookieParser from 'cookie-parser';
-import urlRouter from './route/url.route.ts'
+import urlRouter from './route/url.route.ts';
+import cors from 'cors';
 
 const app = express();
 dotenv.config
 const PORT  = process.env.PORT || 3000;
+
+app.use(cors)
 
 app.use(express.json());
 app.use(cookieParser());
