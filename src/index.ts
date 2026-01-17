@@ -7,10 +7,10 @@ import urlRouter from './route/url.route.ts';
 import cors from 'cors';
 
 const app = express();
-dotenv.config
+dotenv.config();
 const PORT  = process.env.PORT || 3000;
 
-app.use(cors)
+app.use(cors())
 
 app.use(express.json());
 app.use(cookieParser());
