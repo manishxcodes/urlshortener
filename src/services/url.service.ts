@@ -12,7 +12,8 @@ export class UrlService {
         const newShortUrl = await this.repository.createUrl({
             shortCode,
             targetURL: data.targetURL,
-            userId: data.userId
+            userId: data.userId,
+            title: data.title
         })
         if(!newShortUrl) throw new AppError("Couldn't generate url", 500);
 

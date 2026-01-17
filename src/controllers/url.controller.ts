@@ -12,11 +12,13 @@ export const createUrl = asyncHandler(
     async function (req: Request, res:Response, next: NextFunction) {
         const userId = req.userId;
         const targetURL = req.body.targetURL;
-        const shortCode = ""
+        const title = req.body.title;
+        const shortCode = "";
 
         if(!userId) return next(new AppError("Unauthorized", 401));
 
         const data = await urlService.createUrl({
+            title,
             userId,
             targetURL,
             shortCode

@@ -14,7 +14,8 @@ export class UrlRepository {
             .returning({
                 id: urlsTable.id,
                 shortCode: urlsTable.shortCode,
-                targetURL: urlsTable.targetURL
+                targetURL: urlsTable.targetURL,
+                title: urlsTable.title
             });
 
         return result;
