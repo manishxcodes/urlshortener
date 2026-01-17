@@ -1,10 +1,10 @@
 import { createUrl, deleteUrl, getAllUrl, redirect } from 'controllers/url.controller';
-import express from 'express';
 import { authMiddleware } from 'middleware/auth.middleware.ts';
 import { validate } from 'middleware/validate.middleware';
 import { createUrlRequestSchema } from '../schema.ts';
+import { Router } from 'express';
 
-const router = express();
+const router = Router();
 
 router.post('/shorten', validate(createUrlRequestSchema), authMiddleware,  createUrl);
 router.get('/', authMiddleware, getAllUrl);
