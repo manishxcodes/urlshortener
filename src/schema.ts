@@ -49,6 +49,8 @@ export const createUrlSchema = z.object({
 
   userId: z
     .uuid("Invalid user ID"),
+  title: z
+    .string().nonempty("Title can't be empty")
 });
 
 
@@ -61,6 +63,8 @@ export const createUrlRequestSchema = z.object({
 
   targetURL: z
     .url("Target URL must be a valid URL"),
+   
+  title: z.string().nonempty("Title can't be empty")
 });
 
 export type CreateUrlBodyType = z.infer<typeof createUrlSchema>;
