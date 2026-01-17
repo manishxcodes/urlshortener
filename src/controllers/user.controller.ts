@@ -17,7 +17,7 @@ export const signup = asyncHandler(
 
         return res.status(200)
             .cookie("token", data.token, options)
-            .json(AppResponse.successObject( "Signup successObjectfull", {token: data.token}));
+            .json(AppResponse.successObject( "Signup successfull", {token: data.token}));
     }
 )
 
