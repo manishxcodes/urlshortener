@@ -35,7 +35,7 @@ export const getAllUrl = asyncHandler(
         const userId = req.userId;
         if(!userId) return next(new AppError("Unauthorized", 401));
 
-        const urls = urlService.getAllUrl(userId);
+        const urls = await urlService.getAllUrl(userId);
          if(!urls) return next(new AppError("Couldn't get all shortUrl"));
 
         return AppResponse.success(res, "FetchedUrl", urls);
