@@ -8,9 +8,13 @@ import cors from 'cors';
 
 const app = express();
 dotenv.config();
-const PORT  = process.env.PORT || 3000;
 
-app.use(cors())
+const port = process.env.PORT || 3000;
+
+app.use(cors({
+    origin: process.env.ORIGIN_URL,
+    credentials: true
+}))
 
 app.use(express.json());
 app.use(cookieParser());
@@ -20,6 +24,6 @@ app.use(urlRouter)
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-    console.log("listening on port 3000");
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
 })
