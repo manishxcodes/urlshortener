@@ -3,6 +3,7 @@ import { UserService } from "services/user.service";
 import { AppError } from "utils/AppError";
 import { AppResponse } from "utils/AppResponse";
 import { asyncHandler } from "utils/AsyncHandler";
+import jwt from 'jsonwebtoken';
 
 const userService = new UserService();
 
@@ -27,9 +28,31 @@ export const signin = asyncHandler(
 
         return res.status(200)
             .cookie("token", result.token, options)
-            .json(AppResponse.successObject( "Login successObjectfull", {token: result.token}));
+            .json(AppResponse.successObject( "Login successfull", {token: result.token}));
     }
 )
+
+export const getAuthStatus = asyncHandler(
+  async function (req: Request, res: Response, next: NextFunction) {
+    const token = req.cookies?.token;
+
+    if (!token) {
+      return res.status(200).json({ authenticated: false });
+    }
+
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { id: string };
+
+      return res.status(200).json({
+        authenticated: true,
+        userId: decoded.id,
+      });
+    } catch {
+      return res.status(200).json({ authenticated: false });
+    }
+  }
+);
+
 
 export const signout = asyncHandler(
     async function (req: Request, res:Response, next: NextFunction) {
