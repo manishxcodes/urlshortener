@@ -25,7 +25,7 @@ export class UrlRepository {
         const data = await db
             .select()
             .from(urlsTable)
-            .where(eq(urlsTable.id, userId));
+            .where(eq(urlsTable.userId, userId));
 
         return data;
     }
