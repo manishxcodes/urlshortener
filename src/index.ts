@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { errorHandler } from 'utils/ErrorHanlder.ts';
 import  userRouter  from './route/user.route.ts';
+import otpRouter from './route/otp.route.ts'
 import cookieParser from 'cookie-parser';
 import urlRouter from './route/url.route.ts';
 import cors from 'cors';
@@ -20,7 +21,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use('/api/v1/user', userRouter);
-app.use(urlRouter)
+app.use(urlRouter);
+app.use('/api/v1/otp', otpRouter);
 
 app.use(errorHandler);
 
