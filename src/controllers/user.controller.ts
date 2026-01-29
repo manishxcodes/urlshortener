@@ -14,7 +14,9 @@ const options = {
 
 export const signup = asyncHandler(
     async function (req: Request, res:Response, next: NextFunction) {
-        const data = await userService.signup(req.body);
+        const verificationToken = req.headers["x-verification-token"] as string;
+        if(!verificationToken) return next(new AppError("OTP verfication required", 401))
+        const data = await userService.signup(req.body, verificationToken);
 
         return res.status(200)
             .cookie("token", data.token, options)
