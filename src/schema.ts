@@ -69,6 +69,54 @@ export const createUrlRequestSchema = z.object({
 
 export type CreateUrlBodyType = z.infer<typeof createUrlSchema>;
 
+export const otpRequestSchema = z.object({
+  email: z.email("Invalid email").max(255)
+});
 
+export const verifyOtpSchema = z.object({
+  email: z.email("Invalid email").max(255),
+  otp: z.string()
+})
+
+export const otpInsertSchema = z.object({
+  email: z.email().max(255),
+  otpHash: z.string().max(255),
+  expiresAt: z.date(),
+});
+
+export type OtpInsertType = z.infer<typeof otpInsertSchema>;
+
+
+export const otpEntitySchema = z.object({
+  id: z
+    .uuid("ID must be a valid UUID"),
+
+  email: z
+    .email("Email must be a valid email address")
+    .max(255, "Email must be at most 255 characters"),
+
+  otpHash: z
+    .string()
+    .max(255, "OTP hash must be at most 255 characters"),
+
+  expiresAt: z
+    .date("Expiry time is required" ),
+
+  attempts: z
+    .number()
+    .int("Attempts must be an integer")
+    .default(0),
+
+  verifiedAt: z
+    .date()
+    .nullable()
+    .optional(),
+
+  createdAt: z
+    .date()
+    .default(new Date()),
+});
+
+export type OtpEntityType = z.infer<typeof otpEntitySchema>;
 
 
