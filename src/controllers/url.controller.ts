@@ -45,6 +45,7 @@ export const getAllUrl = asyncHandler(
 export const deleteUrl = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
     const userId = req.userId;
     const { shortCode } = req.body;
+    
     if(!userId) return next(new AppError("Unauthorized", 401));
     if(!shortCode) return next(new AppError("Shortcode required", 400));
 
