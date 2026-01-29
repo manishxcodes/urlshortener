@@ -2,12 +2,26 @@ import bcrypt from 'bcrypt';
 import { AppError } from 'utils/AppError';
 import { UserRepository } from 'repositories/user.repository';
 import type { SignupInputType } from 'schema';
-import { signToken } from 'utils/jwt';
+import { signToken, verifyToken } from 'utils/jwt';
+import { OtpRepository } from 'repositories/otp.repository';
 
 export class UserService {
     private repository = new UserRepository();
+    private otpRepository = new OtpRepository();
 
-    async signup (data: SignupInputType) {
+    async signup (data: SignupInputType, verificationToken: string) {
+        let payload;
+        try {
+            payload = verifyToken(verificationToken) as {email: string};
+        } catch(err) {
+            throw new AppError("Invalid verification token",401);
+        }
+
+        if(payload.email !== data.email) throw new AppError("Unathorized", 401);
+
+        const otpRecord = await this.otpRepository.findLatestByEmail(payload.email);
+        if(!otpRecord?.verifiedAt) throw new AppError("OTP not verified", 400);
+
         const existingUser = await this.repository.findByEmail(data.email);
         if(existingUser) throw new AppError("Email is already in use", 400);
 
