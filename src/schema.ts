@@ -82,6 +82,7 @@ export const otpInsertSchema = z.object({
   email: z.email().max(255),
   otpHash: z.string().max(255),
   expiresAt: z.date(),
+  verifiedAt: z.date().optional()
 });
 
 export type OtpInsertType = z.infer<typeof otpInsertSchema>;
