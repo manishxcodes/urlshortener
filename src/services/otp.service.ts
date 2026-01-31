@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import { AppError } from "utils/AppError";
 import { signToken } from "utils/jwt";
 import nodemailer from 'nodemailer'
+import { UserRepository } from "repositories/user.repository";
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -17,8 +18,12 @@ const transporter = nodemailer.createTransport({
 
 export class OtpService {
     private repo = new OtpRepository();
+    private userRepo = new UserRepository();
 
     async requestOtp (email: string) {
+        const existingUser = await this.userRepo.findByEmail(email);
+        if(existingUser) throw new AppError("Email aleady in use", 409);
+
         const otp = crypto.randomInt(100000, 999999).toString();
         const otpHash = await bcrypt.hash(otp, 10);
 
@@ -42,8 +47,8 @@ export class OtpService {
                 </div>
             `,
         };
-        await transporter.sendMail(mailOptions);
-
+        const info = await transporter.sendMail(mailOptions);
+        console.log("mail info: ", nodemailer.getTestMessageUrl(info));
 
         return { message: "OTP sent" };
     }
