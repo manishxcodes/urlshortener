@@ -8,9 +8,13 @@ import jwt from 'jsonwebtoken';
 const userService = new UserService();
 
 const options = {
-    httpOnly: true,
-    secure: true
-}
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", 
+  sameSite: "lax" as const,
+  path: "/",
+  maxAge: 24 * 60 * 60 * 1000
+};
+
 
 export const signup = asyncHandler(
     async function (req: Request, res:Response, next: NextFunction) {
