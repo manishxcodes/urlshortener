@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { AppError } from './AppError';
+import { AppError } from './AppError.js';
 
 const jwt_secret = process.env.JWT_SECRET!;
 
