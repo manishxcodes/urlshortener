@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { errorHandler } from 'utils/ErrorHanlder.js';
+import { errorHandler } from './utils/ErrorHanlder.js';
 import  userRouter  from './route/user.route.js';
 import otpRouter from './route/otp.route.js'
 import cookieParser from 'cookie-parser';

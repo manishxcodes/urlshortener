@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
-import { UserRepository } from "repositories/user.repository.js";
-import { AppError } from "utils/AppError.js";
-import { asyncHandler } from "utils/AsyncHandler.js";
+import { UserRepository } from "../repositories/user.repository.js";
+import { AppError } from "../utils/AppError.js";
+import { asyncHandler } from "../utils/AsyncHandler.js";
 import jwt from 'jsonwebtoken';
 
 declare global {

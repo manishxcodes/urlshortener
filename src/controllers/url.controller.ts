@@ -1,9 +1,9 @@
 import type { Request, Response, NextFunction } from "express";
-import { UrlRepository } from "repositories/url.repository.js";
-import { UrlService } from "services/url.service.js";
-import { AppError } from "utils/AppError.js";
-import { AppResponse } from "utils/AppResponse.js";
-import { asyncHandler } from "utils/AsyncHandler.js";
+import { UrlRepository } from "../repositories/url.repository.js";
+import { UrlService } from "../services/url.service.js";
+import { AppError } from "../utils/AppError.js";
+import { AppResponse } from "../utils/AppResponse.js";
+import { asyncHandler } from "../utils/AsyncHandler.js";
 
 const urlService = new UrlService();
 const urlRepo = new UrlRepository();

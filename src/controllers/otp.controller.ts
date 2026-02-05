@@ -1,7 +1,7 @@
 import type {Request, Response } from "express";
-import { OtpService } from "services/otp.service.js";
-import { AppResponse } from "utils/AppResponse.js";
-import { asyncHandler } from "utils/AsyncHandler.js";
+import { OtpService } from "../services/otp.service.js";
+import { AppResponse } from "../utils/AppResponse.js";
+import { asyncHandler } from "../utils/AsyncHandler.js";
 
 const otpService = new OtpService();
 

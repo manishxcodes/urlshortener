@@ -1,6 +1,6 @@
-import { otpsTable } from 'models/otp.model.js';
+import { otpsTable } from '../models/otp.model.js';
 import { db } from '../db/index.js';
-import { otpEntitySchema, type OtpEntityType, type OtpInsertType } from 'schema.js';
+import { otpEntitySchema, type OtpEntityType, type OtpInsertType } from '../schema.js';
 import { desc, eq } from 'drizzle-orm';
 
 export class OtpRepository {

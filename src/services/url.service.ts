@@ -1,7 +1,7 @@
-import { UrlRepository } from "repositories/url.repository.js";
-import type { CreateUrlBodyType } from "schema.js";
+import { UrlRepository } from "../repositories/url.repository.js";
+import type { CreateUrlBodyType } from "../schema.js";
 import { nanoid } from "nanoid";
-import { AppError } from "utils/AppError.js";
+import { AppError } from "../utils/AppError.js";
 
 export class UrlService {
     private repository = new UrlRepository();
