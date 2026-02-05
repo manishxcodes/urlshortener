@@ -1,9 +1,8 @@
 import type { NextFunction, Request, Response } from "express";
-import { UserRepository } from "repositories/user.repository.ts";
-import { AppError } from "utils/AppError";
-import { asyncHandler } from "utils/AsyncHandler";
+import { UserRepository } from "repositories/user.repository.js";
+import { AppError } from "utils/AppError.js";
+import { asyncHandler } from "utils/AsyncHandler.js";
 import jwt from 'jsonwebtoken';
-import type { SignupInputType } from "schema";
 
 declare global {
     namespace Express {

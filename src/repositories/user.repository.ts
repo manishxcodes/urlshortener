@@ -1,7 +1,7 @@
-import { db } from '../db/index.ts';
-import { usersTable } from 'models/user.model.ts';
+import { db } from '../db/index.js';
+import { usersTable } from 'models/user.model.js';
 import { eq } from 'drizzle-orm';
-import type { SignupInputType } from 'schema.ts';
+import type { SignupInputType } from 'schema.js';
 
 export class UserRepository {
     async findByEmail(email: string) {

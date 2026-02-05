@@ -1,10 +1,10 @@
-import { OtpRepository } from "repositories/otp.repository";
+import { OtpRepository } from "repositories/otp.repository.js";
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
-import { AppError } from "utils/AppError";
-import { signToken } from "utils/jwt";
+import { AppError } from "utils/AppError.js";
+import { signToken } from "utils/jwt.js";
 import nodemailer from 'nodemailer'
-import { UserRepository } from "repositories/user.repository";
+import { UserRepository } from "repositories/user.repository.js";
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",

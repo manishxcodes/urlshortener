@@ -1,7 +1,7 @@
 import { createUrl, deleteUrl, getAllUrl, redirect } from 'controllers/url.controller';
-import { authMiddleware } from 'middleware/auth.middleware.ts';
+import { authMiddleware } from 'middleware/auth.middleware.js';
 import { validate } from 'middleware/validate.middleware';
-import { createUrlRequestSchema } from '../schema.ts';
+import { createUrlRequestSchema } from '../schema.js';
 import { Router } from 'express';
 
 const router = Router();

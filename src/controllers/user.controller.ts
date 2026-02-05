@@ -1,8 +1,8 @@
 import type { Request, Response, NextFunction } from "express";
-import { UserService } from "services/user.service";
-import { AppError } from "utils/AppError";
-import { AppResponse } from "utils/AppResponse";
-import { asyncHandler } from "utils/AsyncHandler";
+import { UserService } from "services/user.service.js";
+import { AppError } from "utils/AppError.js";
+import { AppResponse } from "utils/AppResponse.js";
+import { asyncHandler } from "utils/AsyncHandler.js";
 import jwt from 'jsonwebtoken';
 
 const userService = new UserService();

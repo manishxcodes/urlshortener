@@ -1,10 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { errorHandler } from 'utils/ErrorHanlder.ts';
-import  userRouter  from './route/user.route.ts';
-import otpRouter from './route/otp.route.ts'
+import { errorHandler } from 'utils/ErrorHanlder.js';
+import  userRouter  from './route/user.route.js';
+import otpRouter from './route/otp.route.js'
 import cookieParser from 'cookie-parser';
-import urlRouter from './route/url.route.ts';
+import urlRouter from './route/url.route.js';
 import cors from 'cors';
 
 const app = express();

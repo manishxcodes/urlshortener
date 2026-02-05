@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import { AppError } from 'utils/AppError';
+import { AppError } from 'utils/AppError.js';
 
 const connectionUrl = process.env.DATABASE_URL;
 if(!connectionUrl) {

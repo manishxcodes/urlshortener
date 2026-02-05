@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt';
-import { AppError } from 'utils/AppError';
-import { UserRepository } from 'repositories/user.repository';
-import type { SignupInputType } from 'schema';
-import { signToken, verifyToken } from 'utils/jwt';
-import { OtpRepository } from 'repositories/otp.repository';
+import { AppError } from 'utils/AppError.js';
+import { UserRepository } from 'repositories/user.repository.js';
+import type { SignupInputType } from 'schema.js';
+import { signToken, verifyToken } from 'utils/jwt.js';
+import { OtpRepository } from 'repositories/otp.repository.js';
 
 export class UserService {
     private repository = new UserRepository();

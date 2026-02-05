@@ -1,8 +1,8 @@
-import { db } from '../db/index.ts';
-import { urlsTable } from 'models/url.model.ts';
+import { db } from '../db/index.js';
+import { urlsTable } from 'models/url.model.js';
 import { eq, and } from 'drizzle-orm';
-import type { CreateUrlBodyType } from 'schema.ts';
-import { AppError } from 'utils/AppError.ts';
+import type { CreateUrlBodyType } from 'schema.js';
+import { AppError } from 'utils/AppError.js';
 
 export class UrlRepository {
     async createUrl (data: CreateUrlBodyType) {
