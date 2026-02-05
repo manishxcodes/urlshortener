@@ -68,6 +68,7 @@ export class OtpService {
         const isMatch = await bcrypt.compare(otp, record.otpHash);
         if(!isMatch ) {
             await this.repo.incrementAttempts(record.id, record.attempts + 1);
+            throw new AppError("OTP is incorrect");
         }
 
         await this.repo.markVerified(record.id);
