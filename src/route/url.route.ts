@@ -1,6 +1,6 @@
-import { createUrl, deleteUrl, getAllUrl, redirect } from 'controllers/url.controller';
+import { createUrl, deleteUrl, getAllUrl, redirect } from 'controllers/url.controller.js';
 import { authMiddleware } from 'middleware/auth.middleware.js';
-import { validate } from 'middleware/validate.middleware';
+import { validate } from 'middleware/validate.middleware.js';
 import { createUrlRequestSchema } from '../schema.js';
 import { Router } from 'express';
 
